@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Directors{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+    {% for director in object_list %}
+        <td onclick="window.location.href='/{{director.id}}'">
+            <img src="{{ director.image }}" alt="Foto de {{ director }}"><br>
+            <span class="nombre_director">{{ director }}{% if director.dead %}&dagger;{% endif %}</span>
+        </td>
+        {% cycle '' '' '</tr><tr>' %}
+    {% empty %}
+        <td>No hay directores aún</td>
+    {% endfor %}
+    </tr>
+</table>
+{% endblock %}
